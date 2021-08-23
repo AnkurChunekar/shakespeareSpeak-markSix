@@ -6,7 +6,7 @@ var textOutput = document.querySelector("#outputBox");
 
 
 function getTranslationUrl(text) {
-    return ("https://api.funtranslations.com/translate/minion.json" + "?text=" + text)
+    return ("https://api.funtranslations.com/translate/shakespeare.json" + "?text=" + text)
 }
 
 
@@ -18,7 +18,11 @@ function clickEvent() {
 
     fetch(getTranslationUrl(inputText))
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => {
+
+        var translatedText = json.contents.translated;
+        textOutput.innerText = translatedText;
+    })
 }
   
 
